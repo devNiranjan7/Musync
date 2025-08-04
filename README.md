@@ -36,10 +36,10 @@ This project can be deployed using [Vercel](https://vercel.com/) easily.
 
 ## Deployment Safety Notes
 
-- ❌ No login or user authentication
-- ❌ No data collection
-- ✅ Fully static, read-only project
-- ✅ Safe for public demos and portfolios
+- No login or user authentication
+- No data collection
+- Fully static, read-only project
+- Safe for public demos and portfolios
 
 ---
 
@@ -53,6 +53,4 @@ Frontend Developer & Student
 
 ## Live Preview
 
-> (Add your actual deployment link below)
-
-🌍 [https://musync.vercel.app](https://musync.vercel.app)
+> [https://musync.vercel.app](https://musync-tau.vercel.app/)
