@@ -20,25 +20,11 @@ function formatTime(seconds) {
 // FETCH SONGS FROM A FOLDER
 async function getSongs(folder = "") {
     try {
-        let a = await fetch(`/songs/${folder}`);
-        let response = await a.text();
-
-        let div = document.createElement("div");
-        div.innerHTML = response;
-
-        let as = div.getElementsByTagName("a");
-        let songs = [];
-
-        for (let index = 0; index < as.length; index++) {
-            const element = as[index];
-            if (element.href.endsWith(".mp3")) {
-                const fileName = element.href.split(`/songs/${folder}/`)[1];
-                songs.push(fileName);
-            }
-        }
+        const res = await fetch(`songs/${folder}/index.json`);
+        const songs = await res.json();
         return songs;
     } catch (error) {
-        console.error(`Failed to fetch songs from folder "${folder}":`, error);
+        console.error(`Failed to fetch index.json from "${folder}":`, error);
         return [];
     }
 }
@@ -215,41 +201,29 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // DISPLAY ALBUMS (FOLDERS) AS CARDS
 async function displayAlbums() {
-    let a = await fetch(`songs/`);
-    let response = await a.text();
-
-    let div = document.createElement("div");
-    div.innerHTML = response;
-
-    let anchors = div.getElementsByTagName("a");
     let cardContainer = document.querySelector(".cardContainer");
 
-    let array = Array.from(anchors);
+    try {
+        let res = await fetch("albums.json");
+        let albums = await res.json();
 
-    for (let index = 0; index < array.length; index++) {
-        const e = array[index];
+        albums.forEach(album => {
+            const { folder, title, description } = album;
 
-        if (e.href.includes("/songs/")) {
-            let folder = e.href.split("/").slice(-1)[0];
-
-            try {
-                let a = await fetch(`songs/${folder}/info.json`);
-                let response = await a.json();
-
-                cardContainer.innerHTML += `
-                    <div data-folder="${folder}" class="card">
-                        <div class="play">
-                            <img src="icons/play-box.svg" alt="Play-button">
-                        </div>
-                        <img src="songs/${folder}/cover.png" alt="Cover-Image">
-                        <h2>${response.title}</h2>
-                        <p>${response.description}</p>
+            cardContainer.innerHTML += `
+                <div data-folder="${folder}" class="card">
+                    <div class="play">
+                        <img src="icons/play-box.svg" alt="Play-button">
                     </div>
-                `;
-            } catch (err) {
-                console.warn(`Missing info.json for folder "${folder}"`);
-            }
-        }
+                    <img src="songs/${folder}/cover.png" alt="Cover-Image">
+                    <h2>${title}</h2>
+                    <p>${description}</p>
+                </div>
+            `;
+        });
+    } catch (err) {
+        console.error("Error loading albums:", err);
+        cardContainer.innerHTML = "<p>Failed to load albums.</p>";
     }
 }
 
