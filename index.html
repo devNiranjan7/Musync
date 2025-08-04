@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musync - Web Player: Music for everyone</title>
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="utility.css">
+</head>
+
+<body>
+    <!-- Educational Disclaimer Banner -->
+    <div id="disclaimerBanner" class="disclaimer-banner">
+        ⚠️ This site is a student project for educational purposes only. Not affiliated with Spotify.View source on <a
+            style="color: #000;" href="#" target="_blank">GitHub</a>.
+        <span class="close-btn" onclick="document.getElementById('disclaimerBanner').classList.remove('show')">✖</span>
+    </div>
+
+    <div class="container flex bg-black">
+        <div class="left p-1">
+            <div class="close">
+                <img width="30px" class="invert" src="icons/close.svg" alt="close">
+            </div>
+            <div class="home rounded bg-grey m-1 p-1">
+                <div class="logo align-center flex"><img class="invert" src="images/logo.png" alt="logo">Musync</div>
+                <ul>
+                    <li><img class="invert" src="icons/home.svg" alt="home">Home</li>
+                    <li><img class="invert" src="icons/search.svg" alt="search">Search</li>
+                </ul>
+            </div>
+            <div class="library rounded bg-grey m-1 p-1">
+                <div class="library-heading p-1">
+                    <h2>Your Library</h2>
+                </div>
+                <div class="songsList">
+                    <ul></ul>
+                </div>
+
+                <div class="library-footer flex p-1">
+                    <div><a href="#">Legal</a></div>
+                    <div><a href="#">Safety & Privacy Center</a></div>
+                    <div><a href="#">Privacy Policy</a></div>
+                    <div><a href="#">Cookies</a></div>
+                    <div><a href="#">About Ads</a></div>
+                    <div><a href="#">Accessibility</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="right rounded bg-grey">
+            <div class="header bg-black rounded">
+                <div class="nav">
+                    <img class="invert hamburger" src="icons/hamburger.svg" alt="hamburger">
+                    <img style="width: 20px;" src="icons/left-arrow.svg" alt="left-arrow">
+                    <img style="width: 20px;" src="icons/right-arrow.svg" alt="right-arrow">
+                </div>
+            </div>
+            <div class="musyncPlaylists">
+                <h1>Musync Playlists</h1>
+                <div class="cardContainer"></div>
+                <div class="playbar p-1">
+                    <div class="seekbar">
+                        <div class="progress-fill"></div>
+                        <div class="circle"></div>
+                    </div>
+                    <div class="aboutsong">
+                        <div class="songinfo"></div>
+                        <div class="songButtons">
+                            <img class="invert" id="previous" src="icons/prevsong.svg" alt="previous">
+                            <img class="invert" id="play" src="icons/play.svg" alt="play">
+                            <img class="invert" id="next" src="icons/nextsong.svg" alt="next">
+                        </div>
+                        <div class="timevol">
+                            <div class="songtime"></div>
+                            <div class="songVolume flex justify-center align-center">
+                                <img width="30px" src="icons/volume.svg" alt="volume">
+                                <div class="range">
+                                    <input type="range" name="volume" min="0" max="100" value="30" id="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
