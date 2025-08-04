@@ -53,6 +53,4 @@ Frontend Developer & Student
 
 ## Live Preview
 
-> (Add your actual deployment link below)
-
- [https://musync.vercel.app](https://musync-tau.vercel.app/)
+> [https://musync.vercel.app](https://musync-tau.vercel.app/)
