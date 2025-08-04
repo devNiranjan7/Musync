@@ -1,0 +1,29 @@
+{
+    "version": 2,
+    "routes": [
+        {
+            "src": "/(.*)",
+            "headers": {
+                "X-Robots-Tag": "noindex, nofollow"
+            },
+            "continue": true
+        }
+    ],
+    "headers": [
+        {
+            "source": "/(.*)",
+            "headers": [
+                {
+                    "key": "X-Content-Type-Options",
+                    "value": "nosniff"
+                },
+                {
+                    "key": "Referrer-Policy",
+                    "value": "no-referrer"
+                }
+            ]
+        }
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false
+}
